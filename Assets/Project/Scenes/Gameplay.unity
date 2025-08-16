@@ -304,6 +304,7 @@ MonoBehaviour:
   _boardContainer: {fileID: 429446045}
   _tilePrefabRepository: {fileID: 11400000, guid: 153eac3747f207a40add49ed6e2dacb9, type: 2}
   _tileSpotPrefab: {fileID: -4864831497923239132, guid: 6527630aaec5689489d14bfbb482fd0f, type: 3}
+  _preloadPerVariant: 8
 --- !u!114 &429446044
 MonoBehaviour:
   m_ObjectHideFlags: 0
