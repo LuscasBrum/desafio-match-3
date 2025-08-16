@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Gazeus.DesafioMatch3.Models;
 using UnityEngine;
@@ -6,6 +7,8 @@ namespace Gazeus.DesafioMatch3.Core
 {
     public class GameService
     {
+        public event Action<int> OnPointMatched;
+
         private List<List<Tile>> _boardTiles;
         private List<int> _tilesTypes;
         private int _tileCount;
@@ -68,6 +71,7 @@ namespace Gazeus.DesafioMatch3.Core
                         {
                             matchedPosition.Add(new Vector2Int(x, y));
                             newBoard[y][x] = new Tile { Id = -1, Type = -1 };
+                            OnPointMatched?.Invoke(matchedPosition.Count);
                         }
                     }
                 }
@@ -120,7 +124,7 @@ namespace Gazeus.DesafioMatch3.Core
                     {
                         if (newBoard[y][x].Type == -1)
                         {
-                            int tileType = Random.Range(0, _tilesTypes.Count);
+                            int tileType = UnityEngine.Random.Range(0, _tilesTypes.Count);
                             Tile tile = newBoard[y][x];
                             tile.Id = _tileCount++;
                             tile.Type = _tilesTypes[tileType];
@@ -200,7 +204,7 @@ namespace Gazeus.DesafioMatch3.Core
                     }
 
                     board[y][x].Id = _tileCount++;
-                    board[y][x].Type = noMatchTypes[Random.Range(0, noMatchTypes.Count)];
+                    board[y][x].Type = noMatchTypes[UnityEngine.Random.Range(0, noMatchTypes.Count)];
                 }
             }
 
